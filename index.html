@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baidoa System</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B3C5D">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+
+<body>
+
+    <!-- Login Overlay -->
+    <div id="login-container"
+        style="display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); z-index: 9999; align-items: center; justify-content: center;">
+        <div
+            style="background: white; padding: 2.5rem; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 100px; height: 100px; margin: 0 auto 1rem;">
+                    <img src="assets/logo.jpg" alt="School Logo"
+                        style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #1e3a8a;">
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 0.5rem;">Welcome Back</h2>
+                <p style="color: var(--text-muted);">Sign in to your account</p>
+            </div>
+            <form id="login-form">
+                <div style="margin-bottom: 1rem;">
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 500;">Username</label>
+                    <div style="position: relative;">
+                        <i class="fa-solid fa-user"
+                            style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        <input type="text" id="username" class="form-control" placeholder="Enter username"
+                            style="padding-left: 2.5rem;" required>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label
+                        style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 500;">Password</label>
+                    <div style="position: relative;">
+                        <i class="fa-solid fa-lock"
+                            style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        <input type="password" id="password" class="form-control" placeholder="Enter password"
+                            style="padding-left: 2.5rem;" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; padding: 0.8rem; font-size: 1rem;">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container" id="app-main" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section"
+                style="flex-direction: column; align-items: start; gap: 0.5rem; padding-bottom: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="assets/logo.jpg" alt="Logo"
+                        style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                    <h1 style="font-size: 1rem; line-height: 1.2;">Baidoa Primary &<br>Secondary School</h1>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" data-target="dashboard">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-target="students">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span>Students</span>
+                </a>
+                <a href="#" class="nav-item" data-target="registration">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Registration</span>
+                </a>
+                <a href="#" class="nav-item" data-target="teachers">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span>Teachers</span>
+                </a>
+                <a href="#" class="nav-item" data-target="attendance">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Attendance</span>
+                </a>
+                <a href="#" class="nav-item" data-target="fees">
+                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                    <span>Fees</span>
+                </a>
+                <a href="#" class="nav-item" data-target="exams">
+                    <i class="fa-solid fa-file-pen"></i>
+                    <span>Exams</span>
+                </a>
+                <a href="#" class="nav-item" data-target="reports">
+                    <i class="fa-solid fa-file-waveform"></i>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="user-profile" onclick="navigateTo('settings')" style="cursor: pointer;" title="Go to Settings">
+                <div class="avatar">AD</div>
+                <div class="user-info">
+                    <span class="name">Admin User</span>
+                    <span class="role">Administrator</span>
+                </div>
+                <button onclick="event.stopPropagation(); logout()"
+                    style="background: none; border: none; cursor: pointer; color: var(--warning); margin-left: auto;"
+                    title="Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div style="display: flex; align-items: center;">
+                    <button id="menu-toggle" class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+                    <h2 id="page-title">Dashboard</h2>
+                </div>
+                <div class="actions">
+                    <button class="notif-btn" onclick="navigateTo('notifications')" title="Notifications"><i
+                            class="fa-regular fa-bell"></i></button>
+                    <button class="settings-btn" onclick="navigateTo('settings')" title="Settings"><i
+                            class="fa-solid fa-gear"></i></button>
+                </div>
+            </header>
+
+            <div id="content-area" class="content-area">
+                <!-- Content will be injected here by JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker Registered');
+                    }, function(err) {
+                        console.log('Service Worker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>

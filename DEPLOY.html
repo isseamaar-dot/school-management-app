@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy Guide - Baidoa School System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .option h2 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .option p {
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .steps {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .steps ol {
+            margin-left: 1.5rem;
+        }
+
+        .steps li {
+            margin-bottom: 0.5rem;
+            color: #334155;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning strong {
+            color: #92400e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Deploy Your School Management System</h1>
+        <p class="subtitle">Choose the easiest way to share your system with others</p>
+
+        <div class="option">
+            <h2>🌟 Option 1: GitHub Pages <span class="badge">RECOMMENDED</span></h2>
+            <p>Free, reliable, and perfect for sharing with your school staff and principal.</p>
+            <div class="steps">
+                <ol>
+                    <li>Create a free account at <strong>github.com</strong></li>
+                    <li>Create a new repository (name it anything you like)</li>
+                    <li>Upload all your project files</li>
+                    <li>Go to Settings → Pages</li>
+                    <li>Enable GitHub Pages from main branch</li>
+                    <li>Get your shareable link: <code>https://[username].github.io/[repo-name]/</code></li>
+                </ol>
+            </div>
+            <a href="https://github.com/new" target="_blank" class="btn">Start on GitHub →</a>
+        </div>
+
+        <div class="option">
+            <h2>⚡ Option 2: Netlify <span class="badge">FASTEST</span></h2>
+            <p>Drag & drop deployment - get a link in 30 seconds!</p>
+            <div class="steps">
+                <ol>
+                    <li>Go to <strong>netlify.com</strong></li>
+                    <li>Sign up for free</li>
+                    <li>Drag your entire project folder to the upload area</li>
+                    <li>Get instant link: <code>https://[your-site].netlify.app</code></li>
+                </ol>
+            </div>
+            <a href="https://app.netlify.com/drop" target="_blank" class="btn">Deploy on Netlify →</a>
+        </div>
+
+        <div class="option">
+            <h2>🔷 Option 3: Vercel</h2>
+            <p>Professional hosting with automatic deployments.</p>
+            <div class="steps">
+                <ol>
+                    <li>Go to <strong>vercel.com</strong></li>
+                    <li>Sign up with GitHub</li>
+                    <li>Import your repository</li>
+                    <li>Deploy automatically</li>
+                    <li>Share link: <code>https://[project].vercel.app</code></li>
+                </ol>
+            </div>
+            <a href="https://vercel.com/new" target="_blank" class="btn">Deploy on Vercel →</a>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Security Note:</strong> Before sharing publicly, change the default login credentials in
+            <code>app.js</code> (search for "admin" and "admin123" around line 1578).
+        </div>
+
+        <div
+            style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e2e8f0; text-align: center; color: #64748b;">
+            <p><strong>Need Help?</strong> Open the README.md file for detailed instructions.</p>
+            <p style="margin-top: 0.5rem;">All options are 100% FREE and take less than 5 minutes! 🎉</p>
+        </div>
+    </div>
+</body>
+
+</html>
